@@ -1,5 +1,11 @@
+import HomePage from "../pages/HomePage";
+
 const PageBody = () => {
-  return <div>PageBody</div>;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 };
 
 export default PageBody;

@@ -3,11 +3,14 @@ import MainPage from "./layout/MainPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import RegisterFormPage from "./pages/RegisterFormPage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<RegisterPage />} />
+
+      <Route path="/form" element={<RegisterFormPage />} />
 
       <Route path="/login" element={<LoginPage />} />
 

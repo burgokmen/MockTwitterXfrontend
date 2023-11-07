@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import twitterL from "../assets/twitterLogo.png";
 type FormValues = {
   userHandle: string;
   firstName: string;
@@ -21,75 +22,84 @@ export default function RegisterFormPage() {
   console.log(errors);
 
   return (
-    <form
-      className="flex flex-col m-auto border-8 p-5 w-[20rem]"
-      onSubmit={onSubmit}
-    >
-      <input
-        className="border-2 border-grey-500 "
-        type="text"
-        placeholder="User Handle"
-        {...register("userHandle", { maxLength: 40 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="text"
-        placeholder="First name"
-        {...register("firstName", { required: true, maxLength: 80 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="text"
-        placeholder="Last name"
-        {...register("lastName", { required: true, maxLength: 100 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="text"
-        placeholder="Email"
-        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="password"
-        placeholder="Password"
-        {...register("password", { min: 8, maxLength: 150 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="tel"
-        placeholder="Cellular"
-        {...register("cellular", { required: true, min: 10 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="datetime"
-        placeholder="Birthday"
-        {...register("birthday", { valueAsDate: true })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="text"
-        placeholder="Location"
-        {...register("location", { maxLength: 30 })}
-      />
-      <input
-        className="border-2 border-grey-500 "
-        type="url"
-        placeholder="Profile Picture"
-        {...register("profilePicture")}
-      />
-      <input
-        className="mb-5 border-2 border-grey-500 "
-        type="url"
-        placeholder="ProfileWalpaper"
-        {...register("profileWalpaper")}
-      />
+    <div>
+      <img className="m-auto mt-5" src={twitterL} alt="xlogo" />
+      <form
+        className="flex flex-col gap-2 m-auto border-8 p-5 w-[20rem] mt-5"
+        onSubmit={onSubmit}
+      >
+        <h1 className="text-center text-2xl mb-1 font-bold">
+          Create an account
+        </h1>
+        <input
+          className="m-auto "
+          type="text"
+          placeholder="User Handle"
+          {...register("userHandle", { maxLength: 40 })}
+        />
+        <input
+          className="m-auto "
+          type="text"
+          placeholder="First name"
+          {...register("firstName", { required: true, maxLength: 80 })}
+        />
+        <input
+          className="m-auto "
+          type="text"
+          placeholder="Last name"
+          {...register("lastName", { required: true, maxLength: 100 })}
+        />
+        <input
+          className="m-auto "
+          type="text"
+          placeholder="Email"
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+        />
+        <input
+          className="m-auto "
+          type="password"
+          placeholder="Password"
+          {...register("password", { min: 8, maxLength: 150 })}
+        />
+        <input
+          className="m-auto "
+          type="tel"
+          placeholder="Cellular"
+          {...register("cellular", { required: true, min: 10 })}
+        />
+        <input
+          className="m-auto "
+          type="text"
+          placeholder="Location"
+          {...register("location", { maxLength: 30 })}
+        />
+        <input
+          className="m-auto "
+          type="url"
+          placeholder="Profile Picture"
+          {...register("profilePicture")}
+        />
+        <input
+          className="m-auto mb-1"
+          type="url"
+          placeholder="ProfileWalpaper"
+          {...register("profileWalpaper")}
+        />
+        <div className="m-auto mb-3 ">
+          <label>Birthday: </label>
+          <input
+            className=" "
+            type="date"
+            placeholder="Birthday"
+            {...register("birthday", { valueAsDate: true })}
+          />
+        </div>
 
-      <input
-        className="bg-[#007bff] w-[10rem] text-white text-center p-2 rounded-md m-auto"
-        type="submit"
-      />
-    </form>
+        <input
+          className="bg-[#007bff] w-[10rem] text-white text-center p-2 rounded-md m-auto"
+          type="submit"
+        />
+      </form>
+    </div>
   );
 }

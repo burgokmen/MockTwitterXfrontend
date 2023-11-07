@@ -25,7 +25,7 @@ export default function RegisterFormPage() {
     <div>
       <img className="m-auto mt-5" src={twitterL} alt="xlogo" />
       <form
-        className="flex flex-col gap-2 m-auto border-8 p-5 w-[20rem] mt-5"
+        className="flex flex-col gap-2 m-auto p-5 w-[20rem] mt-5 shadow-2xl"
         onSubmit={onSubmit}
       >
         <h1 className="text-center text-2xl mb-1 font-bold">
@@ -86,9 +86,9 @@ export default function RegisterFormPage() {
           {...register("profileWalpaper")}
         />
         <div className="m-auto mb-3 ">
-          <label>Birthday: </label>
+          <label className="text-slate-400">Birthday:</label>
           <input
-            className=" "
+            className="text-slate-400"
             type="date"
             placeholder="Birthday"
             {...register("birthday", { valueAsDate: true })}

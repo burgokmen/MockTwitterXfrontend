@@ -10,7 +10,7 @@ type FormValues = {
   birthday: Date;
   location: string;
   profilePicture: string;
-  profileWalpaper: string;
+  profileWallpaper: string;
 };
 export default function RegisterFormPage() {
   const {
@@ -82,8 +82,8 @@ export default function RegisterFormPage() {
         <input
           className="m-auto mb-1"
           type="url"
-          placeholder="ProfileWalpaper"
-          {...register("profileWalpaper")}
+          placeholder="ProfileWallpaper"
+          {...register("profileWallpaper")}
         />
         <div className="m-auto mb-3 ">
           <label className="text-slate-400">Birthday:</label>

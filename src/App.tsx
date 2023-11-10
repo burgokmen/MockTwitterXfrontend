@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<RegisterPage />} />
 
-      <Route path="/form" element={<RegisterFormPage />} />
+      <Route path="/register" element={<RegisterFormPage />} />
 
       <Route path="/login" element={<LoginPage />} />
 
@@ -18,7 +18,7 @@ function App() {
 
       <Route path="/:userHandle" element={<ProfilePage />} />
 
-      <Route path="*" element={<RegisterPage />} />
+      <Route path="*" element={<LoginPage />} />
     </Routes>
   );
 }

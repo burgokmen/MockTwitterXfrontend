@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import twitterL from "../assets/twitterLogo.png";
+import { useNavigate } from "react-router-dom";
 type FormValues = {
   userHandle: string;
   firstName: string;
@@ -18,8 +19,12 @@ export default function RegisterPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    history("/login");
+  });
   console.log(errors);
+  const history = useNavigate();
 
   return (
     <div>
@@ -100,6 +105,12 @@ export default function RegisterPage() {
           type="submit"
         />
       </form>
+      <p className="mt-5 mr-[80px] text-center">
+        <a className="text-[#007bff]" href="/login">
+          Click here
+        </a>{" "}
+        if you need to login...
+      </p>
     </div>
   );
 }

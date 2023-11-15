@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import twitterL from "../assets/twitterLogo.png";
 import { useNavigate } from "react-router-dom";
 type FormValues = {
@@ -12,19 +13,60 @@ type FormValues = {
   location: string;
   profilePicture: string;
   profileWallpaper: string;
+  createdAt: string;
 };
 export default function RegisterPage() {
+  const history = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    history("/login");
+  const date: string = "2023-11-06";
+  const onSubmit = handleSubmit((NewData) => {
+    console.log(NewData);
+    const {
+      userHandle,
+      firstName,
+      lastName,
+      email,
+      password,
+      cellular,
+      birthday,
+      location,
+      profilePicture,
+      profileWallpaper,
+      createdAt = date,
+    } = NewData;
+    const user = {
+      userHandle,
+      firstName,
+      lastName,
+      email,
+      password,
+      cellular,
+      birthday,
+      location,
+      profilePicture,
+      profileWallpaper,
+      createdAt: date,
+    };
+    console.log(user);
+    NewData["createdAt"] = date;
+
+    axios
+      .post("http://localhost:9000/profile/register", NewData)
+      .then((response) => {
+        console.log("Success", response.data);
+        localStorage.setItem("user", JSON.stringify(response.data.password));
+        history("/login");
+      })
+      .catch((error) => {
+        console.error("Fail", error.response.data.message);
+      });
   });
+
   console.log(errors);
-  const history = useNavigate();
 
   return (
     <div>
@@ -64,7 +106,7 @@ export default function RegisterPage() {
           className="m-auto "
           type="password"
           placeholder="Password"
-          {...register("password", { min: 8, maxLength: 150 })}
+          {...register("password", { maxLength: 150 })}
         />
         <input
           className="m-auto "

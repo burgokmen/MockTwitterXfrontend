@@ -58,15 +58,13 @@ export default function RegisterPage() {
       .post("http://localhost:9000/profile/register", NewData)
       .then((response) => {
         console.log("Success", response.data);
-        localStorage.setItem("user", JSON.stringify(response.data.password));
+        localStorage.setItem("user", JSON.stringify(response.data));
         history("/login");
       })
       .catch((error) => {
         console.error("Fail", error.response.data.message);
       });
   });
-
-  console.log(errors);
 
   return (
     <div>

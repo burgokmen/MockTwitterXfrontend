@@ -1,17 +1,19 @@
 import { useForm, Resolver } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import twitterL from "../assets/twitterLogo.png";
+import axios from "axios";
 
 type FormValues = {
-  userHandle: string;
+  email: string;
   password: string;
 };
 
 const schema = yup
   .object()
   .shape({
-    userHandle: yup
+    email: yup
       .string()
       .required("User Handle is required.")
       .min(3, "User Handle must be at least 3 characters."),
@@ -24,12 +26,12 @@ const schema = yup
 
 const resolver: Resolver<FormValues> = async (values) => {
   return {
-    values: values.userHandle && values.password ? values : {},
+    values: values.email && values.password ? values : {},
     errors: {
-      ...(values.userHandle
+      ...(values.email
         ? {}
         : {
-            userHandle: {
+            email: {
               type: "required",
               message: "User Handle is required.",
             },
@@ -47,6 +49,7 @@ const resolver: Resolver<FormValues> = async (values) => {
 };
 
 export default function LoginPage() {
+  const history = useNavigate();
   const {
     register,
     handleSubmit,
@@ -54,15 +57,28 @@ export default function LoginPage() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      userHandle: "",
+      email: "",
       password: "",
     },
   });
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    axios
+      .post("http://localhost:9000/profile/login", data)
+      .then((res) => {
+        console.log(res);
+        history(`/profile/${res.data.userHandle}`);
+      })
+      .catch((err) => {
+        console.log("data", data);
+        console.log(err);
+      });
+  });
 
   const isSubmitDisabled =
-    isDirty &&
-    (errors.userHandle?.type === "min" || errors.password?.type === "min");
+    !isDirty ||
+    errors.email?.type === "required" ||
+    errors.password?.type === "required";
+  isDirty && (errors.email?.type === "min" || errors.password?.type === "min");
 
   return (
     <div>
@@ -77,10 +93,10 @@ export default function LoginPage() {
         </h1>
         <input
           placeholder="User Handle"
-          {...register("userHandle", { min: 3, maxLength: 50 })}
+          {...register("email", { min: 3, maxLength: 50 })}
         />
-        {errors?.userHandle && (
-          <p className="text-red-500">{errors.userHandle.message}</p>
+        {errors?.email && (
+          <p className="text-red-500">{errors.email.message}</p>
         )}
         <input
           placeholder="Password"

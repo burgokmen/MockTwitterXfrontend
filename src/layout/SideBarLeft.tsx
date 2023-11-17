@@ -4,7 +4,6 @@ const SideBarLeft = () => {
   return (
     <div>
       <Navbar />
-      SideBarLeft
     </div>
   );
 };

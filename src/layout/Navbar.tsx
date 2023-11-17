@@ -1,7 +1,20 @@
 import React from "react";
+import homeLogo from "../assets/home.png";
+import explore from "../assets/explore.png";
+import notification from "../assets/notification.png";
+import messages from "../assets/messages.png";
+import bookmarks from "../assets/bookmarks.png";
+import lists from "../assets/lists.png";
+import profileblack from "../assets/profileblack.png";
+import more from "../assets/more.png";
 import twitterL from "../assets/twitterLogo.png";
+import picbobur from "../assets/ornekboburpic.png";
 
-const Navbar: React.FC<{}> = () => {
+const Navbar: React.FC<object> = () => {
+  const logoutHandler = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className="w-[50rem] mt-20">
       <img
@@ -12,22 +25,14 @@ const Navbar: React.FC<{}> = () => {
       />
 
       <nav
-        className="flex flex-col items-center ml-4 gap-4 mt-32"
+        className="flex flex-col ml-4 gap-4 mt-32"
         style={{ position: "fixed" }}
       >
-        <div className="flex gap-2">
+        <div className="flex justify-start gap-2">
           <img src={homeLogo} alt="home" />
-          <Link to={`/homepage/${loggedInUser.id}`}>
-            {" "}
-            <p>Home</p>
-          </Link>
         </div>
         <div className="flex gap-2">
           <img src={profileblack} alt="profileblack" />
-          <Link to={`/profile/${loggedInUser.id}`}>
-            {" "}
-            <p>Profile</p>
-          </Link>
         </div>
         <div className="flex gap-2">
           <img src={notification} alt="notification" />
@@ -61,7 +66,7 @@ const Navbar: React.FC<{}> = () => {
             onClick={() => logoutHandler()}
             className="bg-[#1D9BF0] text-[#FFFFFF] text-[1.125rem] rounded-[1.17rem] px-6 py-1"
           >
-            Çıkış Yap
+            Logout
           </button>
         </div>
       </nav>
@@ -72,12 +77,12 @@ const Navbar: React.FC<{}> = () => {
       >
         <img
           className="h-[4rem] w-[4rem] rounded-full"
-          src={loggedInUser.profilePicture}
+          src={picbobur}
           alt="bobur"
         />
         <div className="pt-4">
-          <h1>{loggedInUser.firstName}</h1>
-          <p>{loggedInUser.userName}</p>
+          <h1>first</h1>
+          <p>user</p>
         </div>
       </div>
     </div>

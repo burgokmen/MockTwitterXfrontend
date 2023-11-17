@@ -17,7 +17,7 @@ const Navbar: React.FC<object> = () => {
   };
 
   const { profile } = useContext(ProfileContext);
-
+  console.log("profile", profile);
   return (
     <div className="w-[50rem] mt-20">
       <img

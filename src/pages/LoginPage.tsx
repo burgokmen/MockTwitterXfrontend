@@ -68,9 +68,7 @@ export default function LoginPage() {
     axios
       .post("http://localhost:9000/profile/login", data)
       .then((res) => {
-        console.log(res);
         setProfile(res.data);
-        console.log("profile", profile);
         history(`/profile/${res.data.userHandle}`);
       })
       .catch((err) => {

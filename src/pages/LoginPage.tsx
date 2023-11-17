@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import twitterL from "../assets/twitterLogo.png";
 import axios from "axios";
+import { useContext } from "react";
+import { ProfileContext } from "../contexts/DataContext";
 
 type FormValues = {
   email: string;
@@ -50,6 +52,7 @@ const resolver: Resolver<FormValues> = async (values) => {
 
 export default function LoginPage() {
   const history = useNavigate();
+  const { profile, setProfile } = useContext(ProfileContext);
   const {
     register,
     handleSubmit,
@@ -66,6 +69,8 @@ export default function LoginPage() {
       .post("http://localhost:9000/profile/login", data)
       .then((res) => {
         console.log(res);
+        setProfile(res.data);
+        console.log("profile", profile);
         history(`/profile/${res.data.userHandle}`);
       })
       .catch((err) => {

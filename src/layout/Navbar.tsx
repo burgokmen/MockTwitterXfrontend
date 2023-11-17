@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import homeLogo from "../assets/home.png";
 import explore from "../assets/explore.png";
 import notification from "../assets/notification.png";
@@ -9,11 +9,14 @@ import profileblack from "../assets/profileblack.png";
 import more from "../assets/more.png";
 import twitterL from "../assets/twitterLogo.png";
 import picbobur from "../assets/ornekboburpic.png";
+import { ProfileContext } from "../contexts/DataContext";
 
 const Navbar: React.FC<object> = () => {
   const logoutHandler = () => {
     localStorage.clear();
   };
+
+  const { profile } = useContext(ProfileContext);
 
   return (
     <div className="w-[50rem] mt-20">
@@ -83,8 +86,8 @@ const Navbar: React.FC<object> = () => {
           alt="bobur"
         />
         <div className="pt-4">
-          <h1>first</h1>
-          <p>user</p>
+          <h1>{profile.firstName}</h1>
+          <p>{profile.userHandle}</p>
         </div>
       </div>
     </div>

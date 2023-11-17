@@ -29,7 +29,7 @@ const defaultProfile = {
     email: "",
     password: "",
     cellular: "",
-    birthday: "2000-01-01" as unknown as Date,
+    birthday: "01-01-2000" as unknown as Date,
     location: "",
     profilePicture: "",
     profileWallpaper: "",

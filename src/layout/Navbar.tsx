@@ -30,9 +30,11 @@ const Navbar: React.FC<object> = () => {
       >
         <div className="flex justify-start gap-2">
           <img src={homeLogo} alt="home" />
+          <p>Home</p>
         </div>
         <div className="flex gap-2">
           <img src={profileblack} alt="profileblack" />
+          <p>Profile</p>
         </div>
         <div className="flex gap-2">
           <img src={notification} alt="notification" />

@@ -14,12 +14,11 @@ MockTwitterXfrontend is the user interface of the Mock Twitter web application. 
 - Vite for a fast and efficient development and build process.
 
 ## Technologies Used
-
+- Bun
 - TypeScript
 - Vite
 - HTML, CSS
-- JavaScript
 - React
 - UseContext
-- Axios (for API communication)
+- Axios
 - Tailwind

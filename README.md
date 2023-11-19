@@ -17,8 +17,8 @@ MockTwitterXfrontend is the user interface of the Mock Twitter web application. 
 - Bun
 - TypeScript
 - Vite
-- HTML, CSS
 - React
 - UseContext
 - Axios
 - Tailwind
+- Normalize.css
